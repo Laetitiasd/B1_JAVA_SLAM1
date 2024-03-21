@@ -1,98 +1,102 @@
-package fr.voxi.admin ;
-
+package voxi0303;
 public class AppAdmin {
 
 	public static void main(String[] args) {
 		
-		// Tous les affichages doivent faire apparaître le numéro de la question
+		
+		AudioBook [] lesAudiobooks = {
+				
+				new AudioBook( 1 , "Français" , 15 ) ,
+				new AudioBook( 2 , "Anglais" , 20 ) ,
+				new AudioBook( 3 , "Français" , 10 ) ,
+				new AudioBook( 4 , "Français" , 8 ) ,
+				new AudioBook( 5 , "Allemand" , 33 ) ,
+				new AudioBook( 6 , "Allemand" , 10 ) ,
+				new AudioBook( 7 , "Anglais" , 15 ) ,
+				new AudioBook( 8 , "Français" , 20 )
+				
+		} ;
 		
 		
-		// 1- Créer puis afficher la candidature référencée par la variable cdt1
-		//		Caractéristiques de la candidature :
-		//			Numéro : 1
-		//			État : En attente
-		//			Dépôt : 11/01/2024
-		
-		System.out.println( "\n\n-----[Question 1]-----\n\n" ) ;
-		
-		/* Votre code pour la question 1 ici */
-
-
-
-
-
-		// 2- Tenter d'étudier la candidature 1
-		//		Si l'opération s'est déroulée avec succés, afficher "2- Candidature en cours d'étude"
-		//		Sinon afficher "2- La candidature ne peut pas être étudiée"
-		// 3- ... puis afficher la candicature
-		
-		/* Votre code pour les questions 2 et 3 ici */
+		System.out.println( "\n\n----[ Question 3.4 ]----\n" ) ;
+		visualiserAB( lesAudiobooks ) ;
 		
 		
+		System.out.println( "\n\n----[ Question 3.5 ]----\n" ) ;
+		visualiserLangueAB( lesAudiobooks ) ;
 		
 		
+		System.out.println( "\n\n----[ Question 3.6 ]----\n" ) ;
+		visualiserLangueABMaj( lesAudiobooks ) ;
 		
 		
-		// 4- Afficher l'état de la candidature
-		//		Si la candidature est en attente afficher "4- Candidature en attente."
-		//		Si la candidature est en cours d'étude "4- Candidature en cours d'étude."
-		//		Si la candidature est annulée "4- Candidature annulée."
-		//		Si ...
-		
-		/* Votre code pour la question 4 ici */
+		System.out.println( "\n\n----[ Question 3.7 ]----\n" ) ;
+		int nbABenFr = calculerNbABenFrancais( lesAudiobooks ) ;
+		System.out.println( "Nombre d'audios en français : " + nbABenFr ) ;
 		
 		
+		System.out.println( "\n\n----[ Question 3.8 ]----\n" ) ;
+		visualiserNbMaxChapitres( lesAudiobooks ) ;
 		
-		
-		
-		// 5- Accepter puis afficher la candidature
-		
-		/* Votre code pour la question 5 ici */
-		
-		
-		
-		
-		
-		// 6- Afficher l'état de la candidature 
-		//		(voir question 4)
-		//		...
-
-		/* Votre code pour la question 6 ici */
-		
-		
-		
-						
-		
-		// 7- Tenter d'annuler la candidature
-		//		Si l'opération d'annulation est réalisée avec succès, afficher "7- Candidature annulée."
-		//		Sinon afficher "7- Annulation refusée."
-		// 8- ... puis afficher la candidature
-		
-		/* Votre code pour les questions 7 et 8 ici */
-		
-		
-		
-		
-		
-		// 9- Tenter de rejeter la candidature
-		//		Si l'opération est réalisée avec succès, afficher "9- Candidature rejetée."
-		//		Sinon afficher "9- Opération refusée."
-		// 10- ... puis afficher la candidature
-		
-		/* Votre code pour les questions 9 et 10 ici */
-		
-					
+	}
 	
 	
+	private static void visualiserAB( AudioBook [] lesABooks ) {
+		// Question 3.4 : Votre code ici
+		for (int i=0; i < lesABooks.length; ++i) {
+			System.out.println(lesABooks[i]);
+		}
+	}
 	
-		// 11- Tenter d'accepter la candidature
-		//		Si l'opération est réalisée avec succès, afficher "11- Candidature acceptée."
-		//		Sinon afficher "12- Opération refusée."
-		// 12- ... puis afficher la candidature
+	
+	private static void visualiserLangueAB( AudioBook [] lesABooks ) {
+		// Question 3.5 : Votre code ici
+		for (AudioBook audioBook : lesABooks) {
+            System.out.println(audioBook.getLangue());
+        }
 		
-		/* Votre code pour les questions 11 et 12 ici */
+	}
 	
 
+	private static void visualiserLangueABMaj( AudioBook [] lesABooks ) {
+		// Question 3.6 : Votre code ici
+		for (AudioBook audioBook : lesABooks) {
+            System.out.println(audioBook.getLangue().toUpperCase());
+		}
+	}
+	
+	
+	private static int calculerNbABenFrancais( AudioBook [] lesABooks ) {
+		int nbABooksFr = 0 ;
+		
+		// Question 3.7 : Votre code ici
+		for (int i=0; i < lesABooks.length; ++i) {
+			if(lesABooks[i].getLangue() == "Français") {
+				nbABooksFr += 1;
+			}
+		}
+		return nbABooksFr ;
+	}
+	
+	
+	private static void visualiserNbMaxChapitres(AudioBook[] lesABooks) {
+	    // Question 3.8 : Votre code ici
+	    if (lesABooks.length > 0) {
+	        int nbMaxChapitres = 0;
+	        for (int i = 0; i < lesABooks.length; ++i) {
+	            if (lesABooks[i].getNbChapitres() > nbMaxChapitres) {
+	                nbMaxChapitres = lesABooks[i].getNbChapitres();
+	            }
+	        }
+	        
+	        System.out.println(nbMaxChapitres);
+	    } else {
+	        System.out.println("Aucun audiobook recensé");
+	    	
+	    	}
+		}
 	}
 
-}
+
+
+	
